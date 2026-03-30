@@ -1,14 +1,14 @@
 console.log("script.js loaded");
-// --- API-nøkkel og URL ---
+
 const API_KEY = "jRYaPasH2kNvWaijxJLjPf94ORjPLq8M";
 const BASE_URL = "https://api.giphy.com/v1/gifs/search";
 
-// --- Hent DOM-elementer ---
+
 const gifContainer = document.querySelector("#gif-container");
 const fetchBtn = document.querySelector("#fetch-gif-btn");
 const searchInput = document.querySelector("#search-input");
 
-// --- Hent GIFs fra Giphy ---
+// --- get GIFs from Giphy ---
 async function fetchGifs(searchTerm) {
   const endpoint = `${BASE_URL}?api_key=${API_KEY}&q=${searchTerm}&limit=12&rating=g`;
 
@@ -20,7 +20,7 @@ async function fetchGifs(searchTerm) {
   return images;
 }
 
-// --- Vis GIFs på siden ---
+// --- show GIFs ---
 function displayGifs(images) {
   gifContainer.innerHTML = "";
   for (const url of images) {
@@ -28,7 +28,7 @@ function displayGifs(images) {
   }
 }
 
-// --- Knappetrykk ---
+// --- buttom ---
 fetchBtn.addEventListener("click", async () => {
   const searchTerm = searchInput.value.trim() || "funny cats";
   const images = await fetchGifs(searchTerm);
